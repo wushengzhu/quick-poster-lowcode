@@ -59,7 +59,7 @@ export default class UtilService extends Service {
     if (!work) {
       throw new Error('work not exsit');
     }
-    const { title, desc, content } = work;
+    const { title, desc, content } = work as any;
     this.px2vw(content && content.components);
     const vueApp = createSSRApp({
       data: () => {

@@ -75,7 +75,7 @@ export default function checkPermission(modelName: string | ModelMapping, errorT
       if (rule && rule.conditions) {
         // 假如存在 condition，先查询对应的数据
         const certianRecord = await ctx.model[mongooseModelName].findOne(query).lean();
-        permission = ability.can(action, subject(caslModelName, certianRecord));
+        permission = ability.can(action, subject(caslModelName, certianRecord as any));
       } else {
         permission = ability.can(action, caslModelName);
       }

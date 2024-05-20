@@ -1,9 +1,10 @@
-import { Controller } from 'egg';
+import { Controller, FileStream } from 'egg';
 // eslint-disable-next-line no-restricted-imports
 import { parse, join, extname } from 'path';
 import { nanoid } from 'nanoid';
-import * as sendToWormhole from 'stream-wormhole';
+import sendToWormhole from 'stream-wormhole';
 import * as Busboy from 'busboy';
+// eslint-disable-next-line no-restricted-imports
 import { createWriteStream } from 'fs';
 
 export default class UtilsController extends Controller {

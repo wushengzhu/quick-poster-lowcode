@@ -96,8 +96,9 @@ export default class WorkController extends Controller {
   async template() {
     const { ctx } = this;
     const { id } = ctx.params;
-    const res = await this.ctx.model.Work.findOne({ id }).lean();
-    if (!res.isPublic || !res.isTemplate) {
+    const res = await this.ctx.model.Work.findOne({ id }).lean() as any;
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    if (!res?.isPublic || !res?.isTemplate) {
       return ctx.helper.error({ ctx, errorType: 'workNoPublicFail' });
     }
     ctx.helper.success({ ctx, res });
